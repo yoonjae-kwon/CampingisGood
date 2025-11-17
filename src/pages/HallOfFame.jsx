@@ -31,7 +31,7 @@ function HallOfFame() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch('/camps.json')
+    fetch(`${import.meta.env.BASE_URL}camps.json`)
       .then(res => res.json())
       .then(camps => {
         setData(groupByProvince(camps));

@@ -33,7 +33,7 @@ function ReviewPage() {
   // --- Data Fetching ---
   useEffect(() => {
     setLoading(true);
-    fetch('/camps.json')
+    fetch(`${import.meta.env.BASE_URL}camps.json`)
       .then(res => res.json())
       .then(allCamps => {
         const foundCamp = allCamps.find(c => c.id === campId);

@@ -24,8 +24,8 @@ function Home() {
 
   // 1. 컴포넌트가 처음 켜질 때 camps.json 데이터 로드
   useEffect(() => {
-    // public 폴더에 있으므로 /camps.json 경로 사용
-    fetch('/camps.json')
+    // Vite의 BASE_URL을 사용해 GitHub Pages 호환성 확보
+    fetch(`${import.meta.env.BASE_URL}camps.json`)
       .then(res => res.json())
       .then(camps => {
         setSlidesData(getTopByProvince(camps)); // state 업데이트

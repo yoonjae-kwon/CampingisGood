@@ -41,7 +41,7 @@ function MapPage() {
   // 5. Effect 1: 캠핑장 데이터 로드 및 필터링
   useEffect(() => {
     setIsLoading(true);
-    fetch('/camps.json')
+    fetch(`${import.meta.env.BASE_URL}camps.json`)
       .then(res => res.json())
       .then(campingList => {
         setFilteredCamps(filterCamps(campingList));
