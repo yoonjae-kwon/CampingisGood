@@ -18,7 +18,7 @@ import ReviewPage from './pages/ReviewPage';
 
 function App() {
   return (
-    <HashRouter basename="/campingisgood/">
+    <HashRouter>
       <Routes>
         <Route path="/" element={<Layout />}>
           {/* 1레벨 페이지 */}
