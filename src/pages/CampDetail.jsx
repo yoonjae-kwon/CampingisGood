@@ -15,8 +15,8 @@ function CampDetail() {
   useEffect(() => {
     setLoading(true);
     
-    // [!] 경로를 가장 단순한 '/camps.json'으로 수정
-    fetch('/camps.json') 
+    // Vite의 BASE_URL을 사용해 GitHub Pages 호환성 확보
+    fetch(`${import.meta.env.BASE_URL}camps.json`) 
       .then(res => {
          if (!res.ok) { // 404 등 에러 체크
            throw new Error(`HTTP error! status: ${res.status}`);
