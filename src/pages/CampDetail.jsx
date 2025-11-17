@@ -9,7 +9,8 @@ function CampDetail() {
   // 2. state 관리
   const [camp, setCamp] = useState(null); // 찾은 캠핑장 객체
   const [loading, setLoading] = useState(true);
-  const [activePopup, setActivePopup] = useState(null); 
+  const [activePopup, setActivePopup] = useState(null);
+  const [isLiked, setIsLiked] = useState(false); // 찜 여부 
 
   // 3. campId가 바뀔 때마다 실행되는 Effect
   useEffect(() => {
@@ -29,6 +30,11 @@ function CampDetail() {
         
         if (foundCamp) {
           setCamp(foundCamp); // state에 저장
+          
+          // 찜 여부 확인
+          const likedCamps = JSON.parse(localStorage.getItem('likedCamps')) || [];
+          const liked = likedCamps.some(c => c.id === campId);
+          setIsLiked(liked);
         } else {
           setCamp(null); // 못 찾음
         }
@@ -57,6 +63,27 @@ function CampDetail() {
   const goReservePage = () => {
     // [!] 새로 만든 ReservationPage로 이동
     navigate(`/camp/${campId}/reserve`);
+  };
+
+  // --- 찜하기 핸들러 ---
+  const handleLike = () => {
+    const likedCamps = JSON.parse(localStorage.getItem('likedCamps')) || [];
+    
+    if (isLiked) {
+      // 찜 해제
+      const updated = likedCamps.filter(c => c.id !== campId);
+      localStorage.setItem('likedCamps', JSON.stringify(updated));
+      setIsLiked(false);
+      openPopup('unlike');
+    } else {
+      // 찜하기
+      if (!likedCamps.some(c => c.id === campId)) {
+        likedCamps.push(camp);
+        localStorage.setItem('likedCamps', JSON.stringify(likedCamps));
+      }
+      setIsLiked(true);
+      openPopup('like');
+    }
   };
 
   // --- 렌더링 로직 ---
@@ -140,7 +167,11 @@ function CampDetail() {
           <button className="icon-btn calendar" onClick={goReservePage} title="예약하기">
             <img src={`${import.meta.env.BASE_URL}images/calendar.png`} alt="달력" width="36" height="36" />
           </button>
-          <button className="icon-btn heart" onClick={() => openPopup('like')} title="찜하기">
+          <button 
+            className={`icon-btn heart ${isLiked ? 'liked' : ''}`} 
+            onClick={handleLike} 
+            title={isLiked ? "찜 해제" : "찜하기"}
+          >
             <img src={`${import.meta.env.BASE_URL}images/17.png`} alt="찜" width="36" height="36" />
           </button>
         </div>
@@ -178,7 +209,17 @@ function CampDetail() {
       {activePopup === 'like' && (
         <div className="popup" id="like-popup" style={{ display: 'flex' }}>
           <div className="popup-inner">
-            <h2>찜했습니다!</h2>
+            <h2>❤️ 찜했습니다!</h2>
+            <p>마이페이지에서 확인하세요</p>
+            <button onClick={closePopup}>확인</button>
+          </div>
+        </div>
+      )}
+
+      {activePopup === 'unlike' && (
+        <div className="popup" id="unlike-popup" style={{ display: 'flex' }}>
+          <div className="popup-inner">
+            <h2>찜이 해제되었습니다</h2>
             <button onClick={closePopup}>확인</button>
           </div>
         </div>

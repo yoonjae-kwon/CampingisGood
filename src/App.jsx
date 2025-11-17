@@ -15,6 +15,7 @@ import CampDetail from './pages/CampDetail';
 // 1. 새로 만들 페이지들을 import 합니다.
 import ReservationPage from './pages/ReservationPage'; 
 import ReviewPage from './pages/ReviewPage';
+import MyPage from './pages/MyPage';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="map" element={<MapPage />} />
           <Route path="hall-of-fame" element={<HallOfFame />} />
           <Route path="login" element={<Login />} />
+          <Route path="mypage" element={<MyPage />} />
           <Route path="reserve-complete" element={<ReserveComplete />} />
 
           {/* 2. 상세 페이지 (기존) */}

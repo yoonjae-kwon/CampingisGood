@@ -37,6 +37,20 @@ header h1 {
   text-align: center;
 }
 
+/* 헤더 로고 링크 스타일 (방문, 호버 상태 제거) */
+header a {
+  text-decoration: none;
+  color: inherit;
+}
+
+header a:visited {
+  color: inherit;
+}
+
+header a:hover h1 {
+  color: #333;
+}
+
 nav.nav-scroll {
   display: flex;
   flex-wrap: wrap;
@@ -955,7 +969,7 @@ footer {
   border-radius: 18px;
   padding: 10px;
   cursor: pointer;
-  transition: box-shadow 0.14s;
+  transition: box-shadow 0.14s, background 0.14s;
   width: 56px;
   height: 56px;
   display: flex;
@@ -965,6 +979,10 @@ footer {
 
 .icon-btn:active {
   box-shadow: 0 0 0 2px #ff7959;
+}
+
+.icon-btn.liked {
+  background: #ffe6e0;
 }
 
 .icon-btn img {
@@ -2013,6 +2031,318 @@ tbody tr:hover {
     margin: 0 auto;
   }
 }
+
+/* =================================================================== */
+/* 5. MyPage.jsx (mypage.css) - 마이페이지
+/* =================================================================== */
+
+.mypage-wrapper {
+  background: #f9f9f9;
+  min-height: 100vh;
+  padding: 0;
+  margin: -20px; /* <main> 태그의 padding 상쇄 */
+  width: calc(100% + 40px); /* <main> padding을 포함한 전체 너비 */
+  flex-basis: 100%; /* flex 아이템이 전체 너비 차지하도록 */
+}
+
+.mypage-header {
+  background: linear-gradient(135deg, #ff8c42 0%, #ff6b6b 100%);
+  color: #fff;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.mypage-header h1 {
+  font-size: 2.5rem;
+  margin: 0 0 10px 0;
+  font-weight: 700;
+}
+
+.mypage-header p {
+  font-size: 1.1rem;
+  margin: 0;
+  opacity: 0.9;
+}
+
+.mypage-container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+}
+
+/* ─── 섹션 스타일 ─── */
+.mypage-section {
+  margin-bottom: 0;
+}
+
+.section-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #222;
+  padding-bottom: 15px;
+  border-bottom: 3px solid #ff8c42;
+}
+
+/* ─── 빈 상태 ─── */
+.empty-message {
+  text-align: center;
+  padding: 80px 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px #0001;
+}
+
+.empty-message p {
+  font-size: 1.1rem;
+  color: #888;
+  margin-bottom: 20px;
+}
+
+.btn-search {
+  display: inline-block;
+  background: #ff8c42;
+  color: #fff;
+  padding: 12px 30px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.btn-search:hover {
+  background: #ff6b6b;
+}
+
+/* ─── 캠핑장 카드 그리드 ─── */
+.camps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.camp-card-mypage {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px #0002;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.camp-card-mypage:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px #0003;
+}
+
+.camp-image {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  background: #eee;
+  position: relative;
+}
+
+.camp-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.btn-remove-like {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: #ff6b6b;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-remove-like:hover {
+  background: #ff6b6b;
+  color: #fff;
+}
+
+.camp-info {
+  padding: 20px;
+}
+
+.camp-info .camp-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  color: #222;
+}
+
+.camp-info .camp-addr {
+  font-size: 0.9rem;
+  color: #888;
+  margin: 0 0 12px 0;
+}
+
+.camp-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  font-size: 0.95rem;
+}
+
+.camp-meta .rating {
+  color: #ff6b6b;
+  font-weight: 600;
+}
+
+.camp-meta .price {
+  color: #667eea;
+  font-weight: 600;
+}
+
+.btn-view {
+  display: block;
+  text-align: center;
+  background: #ff8c42;
+  color: #fff;
+  padding: 10px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: background 0.3s;
+}
+
+.btn-view:hover {
+  background: #ff6b6b;
+}
+
+/* ─── 후기 리스트 ─── */
+.reviews-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.review-card-mypage {
+  background: #fff;
+  border-left: 4px solid #ff8c42;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px #0001;
+  transition: box-shadow 0.3s;
+}
+
+.review-card-mypage:hover {
+  box-shadow: 0 4px 16px #0002;
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.review-header .camp-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0;
+  color: #222;
+}
+
+.review-rating {
+  font-size: 1rem;
+  color: #ff6b6b;
+  font-weight: 600;
+}
+
+.review-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.review-date {
+  font-size: 0.85rem;
+  color: #999;
+}
+
+.btn-delete-review {
+  font-size: 0.85rem;
+  background: none;
+  border: none;
+  color: #ff6b6b;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.2s;
+  padding: 0;
+  text-decoration: none;
+}
+
+.btn-delete-review:hover {
+  color: #ff4444;
+  text-decoration: underline;
+}
+
+.review-text {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ─── 반응형 ─── */
+@media (max-width: 1024px) {
+  .mypage-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .mypage-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .mypage-header p {
+    font-size: 0.95rem;
+  }
+
+  .mypage-container {
+    grid-template-columns: 1fr;
+  }
+
+  .camps-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+  }
+
+  .camp-image {
+    height: 140px;
+  }
+
+  .review-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
 
 @media(max-width:700px) {
   .reserve-main {

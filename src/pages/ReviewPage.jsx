@@ -98,6 +98,18 @@ function ReviewPage() {
     // 새 리뷰를 목록 맨 앞에 추가
     setReviews([newReview, ...reviews]);
     
+    // localStorage에 마이 리뷰 저장
+    const myReviews = JSON.parse(localStorage.getItem('myReviews')) || [];
+    const reviewToSave = {
+      campId: campId,
+      campName: camp.name,
+      rating: formStar,
+      text: formText,
+      date: dateStr
+    };
+    myReviews.unshift(reviewToSave);
+    localStorage.setItem('myReviews', JSON.stringify(myReviews));
+    
     // 폼 리셋
     setFormText('');
     setFormStar(5);
