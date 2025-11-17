@@ -2358,3 +2358,37 @@ tbody tr:hover {
     height: 40px;
   }
 }
+
+/* ========== 고객센터 페이지 스타일 추가 ========== */
+.customer-service-wrapper {
+  background: #f9f9f9;
+  width: 100%;
+}
+.cs-header {
+  background: linear-gradient(135deg, #ff8c42 0%, #ff6b6b 100%);
+  color: #fff;
+  padding: 36px 20px;
+  text-align: center;
+}
+.cs-header h1 { font-size: 2rem; margin-bottom: 6px; }
+.cs-header p { opacity: 0.95; }
+.cs-container { max-width: 1100px; margin: 0 auto; display: flex; gap: 28px; padding: 36px 20px; }
+.cs-sidebar { flex: 0 0 220px; }
+.cs-nav { display:flex; flex-direction: column; gap: 8px; }
+.cs-nav-btn { padding: 12px 14px; border: none; background: white; text-align: left; border-left: 4px solid transparent; cursor: pointer; font-weight: 600; }
+.cs-nav-btn.active { background:#fff6f0; border-left-color: #ff8c42; color: #ff8c42; }
+.cs-main { flex:1; min-width:0; }
+.cs-section { background: white; padding: 28px; border-radius: 8px; box-shadow: 0 4px 18px rgba(0,0,0,0.06); }
+.notice-list, .faq-list { display:flex; flex-direction:column; gap:14px; }
+.notice-item { padding:16px; border:1px solid #eee; border-radius:6px; }
+.notice-title { font-weight:700; }
+.notice-date { color:#999; font-size:0.85rem; }
+.inquiry-form .form-group { margin-bottom:12px; }
+.btn-submit { background: linear-gradient(135deg,#ff8c42,#ff6b6b); color:#fff; border:none; padding:10px 18px; border-radius:6px; cursor:pointer; }
+
+@media(max-width:768px) {
+  .cs-container { flex-direction: column; padding: 20px; }
+  .cs-sidebar { order: 0; }
+  .cs-nav { flex-direction: row; overflow-x:auto; }
+  .cs-nav-btn { flex:1; white-space:nowrap; }
+}

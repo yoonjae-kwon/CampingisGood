@@ -16,7 +16,7 @@ function Layout() {
         <nav className="nav-scroll">
           {/* <a href="mypage.html" ...> -> <Link to="/mypage" ...> */}
           <Link to="/mypage" className="nav-btn">마이페이지</Link>
-          <Link to="/customerservice" className="nav-btn">고객센터</Link>
+          <Link to="/customer-service" className="nav-btn">고객센터</Link>
           <Link to="/login" className="nav-btn">로그인</Link>
           <Link to="/createaccount" className="nav-btn">회원가입</Link>
         </nav>

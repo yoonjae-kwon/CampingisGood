@@ -16,6 +16,7 @@ import CampDetail from './pages/CampDetail';
 import ReservationPage from './pages/ReservationPage'; 
 import ReviewPage from './pages/ReviewPage';
 import MyPage from './pages/MyPage';
+import CustomerService from './pages/CustomerService';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path="hall-of-fame" element={<HallOfFame />} />
           <Route path="login" element={<Login />} />
           <Route path="mypage" element={<MyPage />} />
+          <Route path="customer-service" element={<CustomerService />} />
           <Route path="reserve-complete" element={<ReserveComplete />} />
 
           {/* 2. 상세 페이지 (기존) */}
