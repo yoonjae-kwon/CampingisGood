@@ -76,10 +76,11 @@ function CampDetail() {
     <div className="camp-detail-wrapper">
       {/* [!] 배경 이미지 설정
         camps.json의 img 경로가 "/images/..." 로 시작해야 합니다.
+        BASE_URL을 사용해 GitHub Pages의 subdirectory 대응
       */}
       <div
         className="hero-camp-detail"
-        style={{ backgroundImage: `url("${camp.img}")` }}
+        style={{ backgroundImage: camp.img ? `url("${import.meta.env.BASE_URL}${camp.img.replace(/^\//, '')}")` : undefined }}
       >
         <div className="hero-content">
           <h1 className="camp-name">{camp.name}</h1>
