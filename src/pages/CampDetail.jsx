@@ -80,7 +80,7 @@ function CampDetail() {
       */}
       <div
         className="hero-camp-detail"
-        style={{ backgroundImage: camp.img ? `url("${import.meta.env.BASE_URL}${camp.img.replace(/^\//, '')}")` : undefined }}
+        style={{ backgroundImage: camp.img ? `url("${import.meta.env.BASE_URL}${camp.img}")` : undefined }}
       >
         <div className="hero-content">
           <h1 className="camp-name">{camp.name}</h1>
@@ -138,10 +138,10 @@ function CampDetail() {
         
         <div className="side-menu">
           <button className="icon-btn calendar" onClick={goReservePage} title="예약하기">
-            <img src="/images/calendar.png" alt="달력" width="36" height="36" />
+            <img src={`${import.meta.env.BASE_URL}images/calendar.png`} alt="달력" width="36" height="36" />
           </button>
           <button className="icon-btn heart" onClick={() => openPopup('like')} title="찜하기">
-            <img src="/images/17.png" alt="찜" width="36" height="36" />
+            <img src={`${import.meta.env.BASE_URL}images/17.png`} alt="찜" width="36" height="36" />
           </button>
         </div>
       </div>

@@ -147,7 +147,7 @@ function MapPage() {
               // 카드 클릭 시 state 변경
               onClick={() => setSelectedIdx(idx)}
             >
-              <img src={item.img} alt="캠핑장 이미지" style={{ width: 92, height: 65, objectFit: 'cover', borderRadius: 13, background: '#eee', flexShrink: 0 }} />
+              <img src={`${import.meta.env.BASE_URL}${item.img}`} alt="캠핑장 이미지" style={{ width: 92, height: 65, objectFit: 'cover', borderRadius: 13, background: '#eee', flexShrink: 0 }} />
               <div className="card-info">
                 <div className="camp-name">{item.id}</div>
                 <div className="camp-addr">{item.addr}</div>

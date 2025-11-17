@@ -83,7 +83,7 @@ function Home() {
             <Link to="/search" className="main-btn">맞춤형 캠핑장 찾기</Link>
           </div>
           {/* 이미지 경로는 public 폴더 기준, img 태그는 /> 로 닫기 */}
-          <img src="/images/캠핑손님.png" alt="캠핑 일러스트" />
+          <img src={`${import.meta.env.BASE_URL}images/캠핑손님.png`} alt="캠핑 일러스트" />
         </div>
         <div className="box">
           <div className="text">
@@ -91,7 +91,7 @@ function Home() {
             <p>여러분의 캠핑장을 등록하고 운영해보세요!</p>
             <Link to="/administrator_main" className="main-btn">등록하기</Link>
           </div>
-          <img src="/images/캠핑관리자.png" alt="캠핑 일러스트" />
+          <img src={`${import.meta.env.BASE_URL}images/캠핑관리자.png`} alt="캠핑 일러스트" />
         </div>
       </section>
 

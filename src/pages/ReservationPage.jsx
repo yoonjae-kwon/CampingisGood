@@ -93,7 +93,7 @@ function ReservationPage() {
   return (
     <div className="reserve-page-wrapper">
       
-      <div className="hero-bg-reserve" style={{ backgroundImage: `url(${camp.img})` }}>
+      <div className="hero-bg-reserve" style={{ backgroundImage: `url("${import.meta.env.BASE_URL}${camp.img}")` }}>
         <div className="hero-title">
           <h1>{camp.name}</h1>
           <p>{camp.addr}</p>

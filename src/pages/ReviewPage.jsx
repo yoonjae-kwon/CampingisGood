@@ -113,7 +113,7 @@ function ReviewPage() {
 
   return (
     <div className="review-bg">
-      <div className="review-hero" style={{ backgroundImage: `url(${camp.img})` }}>
+      <div className="review-hero" style={{ backgroundImage: `url("${import.meta.env.BASE_URL}${camp.img}")` }}>
         <div className="review-rating" id="hero-rating">{averageRating}</div>
         <div className="review-camp">{camp.name}</div>
         <div className="review-address">{camp.addr}</div>
